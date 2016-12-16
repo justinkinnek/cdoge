@@ -72,16 +72,15 @@ def cluster_geo_data(geo_data, n_clusters, data):
 
 
 def generate_clusters(geo_data, data, start, end, step=10):
+    results = {}
     for i in range(start, end, step):
-        pass
-
+        results[i] = cluster_geo_data(geo_data, i, data)
+    return results
 
 
 data = load_data()
 network_edges = get_follow_edges(data)
 geos = get_geo_coords(data)
-# X = create_sklearn_distance_matrix(geos)
-# model = AgglomerativeClustering()
-# model.fit(X)
-cluster_data = cluster_geo_data(geos, 10, data)
-print len(cluster_data)
+# with open('clusters10-50.json', 'w') as f:
+#     f.write(json.dumps(generate_clusters(geos, data, 10, 50)))
+
