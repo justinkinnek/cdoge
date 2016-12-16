@@ -14,7 +14,13 @@ $.getJSON(
     console.log(b);
 });
 
-
+var DENDRO_JSON;
+$.getJSON("http://localhost:8000/dendro.json", {}, function (jsonData) {
+    DENDRO_JSON = jsonData
+}).error(function (a,b) {
+    console.log(a)
+    console.log(b)
+});
 
 function posts_for_page_ids(page_ids) {
     var results = [];
@@ -89,5 +95,19 @@ function set_embedded_posts(page_ids, n_posts){
 
     }
     reload_embedded_posts();
+}
 
+function get_dendrogram_pages(parent, sub) {
+    var parent_doc = DENDRO_JSON["children"].filter(function (c) {
+        return c["name"] == parent
+    })[0];
+    var sub_doc = parent_doc["children"].filter(function (c) {
+        return c["name"] == sub
+    })[0];
+    var results = []
+    for (hit in sub_doc["data"]){
+        results.push(sub_doc["data"][hit][1][0])
+
+    }
+    return results;
 }
