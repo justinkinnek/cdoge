@@ -369,7 +369,7 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
     function sync_pages(parent, sub) {
         while(DENDRO_JSON == null){}
         var working_pages = get_dendrogram_pages(parent, sub);
-        set_embedded_posts(working_pages, 10);
+        set_embedded_posts(working_pages, 20);
         var working_page_data = page_data_filter(working_pages);
         //update_sidebar(working_page_data);
         console.log("It all happened")
