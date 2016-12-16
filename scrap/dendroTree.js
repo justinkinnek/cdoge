@@ -382,7 +382,15 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         if (d3.event.defaultPrevented) return; // click suppressed
         if (!d._children && d.name != null && d.curr_path != null) {
             d = toggleChildren(d);
-            sync_pages(d.curr_path[0], d.name);
+            try{
+                sync_pages(d.curr_path[0], d.name);
+            }catch (err){
+                console.log("Error:");
+                console.log(err.message);
+                update(d);
+                centerNode(d);
+            }
+
         }else {
             d = toggleChildren(d);
             update(d);
