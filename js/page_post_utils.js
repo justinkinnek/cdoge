@@ -2,11 +2,12 @@
 var DATA;
 $.getJSON(
   // 'https://s3.amazonaws.com/cdoge/saved_fb_krawl.json',
-    'http://localhost:8000/js/data_as_object.js',
+    'https://s3.amazonaws.com/cdoge/data_as_object.js',
   { },
   function(jsonData) {
       console.log('got data!!!');
       DATA = jsonData;
+      console.log(DATA);
   }).error(function (a,b) {
     console.log("ERROR!!!")
     console.log(a);
