@@ -80,6 +80,7 @@ function reload_embedded_posts() {
 
 function set_embedded_posts(page_ids, n_posts){
     var posts_root = $("#posts_view");
+    posts_root.empty();
     var post_ids = posts_for_page_ids(page_ids);
     for (var i=0;i<post_ids.length;i++){
         if (i<n_posts){
