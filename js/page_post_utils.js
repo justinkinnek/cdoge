@@ -25,7 +25,7 @@ $.getJSON("http://localhost:8000/dendro.json", {}, function (jsonData) {
 function posts_for_page_ids(page_ids) {
     var results = [];
     for (var page_id in DATA){
-        if ($.inArray(page_id, page_ids) > -1 && "data" in DATA[page_id]["feed"]){
+        if ($.inArray(page_id, page_ids) > -1 && DATA[page_id]["feed"] && "data" in DATA[page_id]["feed"]){
             var page_name = DATA[page_id][""]["name"];
             var website = DATA[page_id][""]["website"];
             for (var i=0; i < DATA[page_id]["feed"]["data"].length;i++){
@@ -124,4 +124,32 @@ function get_dendrogram_pages(parent, sub) {
         results.push(sub_doc["data"][hit][1][0])
     }
     return results;
+}
+
+function update_side_panel(page_data){
+    var panel_root = $("#side-panel");
+    panel_root.empty();
+    for (var i=0;i<page_data.length;i++){
+        var hit = page_data[i];
+        var new_item = document.createElement("div");
+        new_item.setAttribute("class", "panel-item");
+        var name = document.createTextNode(hit["name"] || "");
+        new_item.append(name);
+        var a = document.createElement("br");
+        new_item.append(a);
+        var b = document.createElement("br");
+        var location = document.createTextNode(hit["city"] +", "+ hit["country"]);
+        new_item.append(location)
+        new_item.append(b);
+        var _id = document.createTextNode(hit["id"]);
+        new_item.append(_id)
+        panel_root.append(new_item);
+    }
+}
+
+function enforce_sidepanel_opened() {
+    var sidePanel = $("#side-panel");
+    if (!sidePanel.hasClass("opened")) {
+        sidePanel.addClass("opened");
+    }
 }

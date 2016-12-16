@@ -371,7 +371,8 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         var working_pages = get_dendrogram_pages(parent, sub);
         set_embedded_posts(working_pages, 20);
         var working_page_data = page_data_filter(working_pages);
-        //update_sidebar(working_page_data);
+        update_side_panel(working_page_data);
+        enforce_sidepanel_opened();
         console.log("It all happened")
     }
 
