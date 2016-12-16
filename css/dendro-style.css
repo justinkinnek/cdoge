@@ -3,6 +3,8 @@ html,body {
   padding:0;
   outline: 0;
   height: 100%;
+  width: 100vw;
+  overflow: hidden;
   background: #444;
 }
 body:after {
@@ -102,4 +104,25 @@ body:after {
   color: #FFF;
   padding: 50px;
   font-size: 30px;
+}
+
+#posts_view {
+  position: fixed;
+  top: 0px;
+  left: 10vw;
+  width: 400px;
+  bottom: 0px;
+  padding: 20px;
+  overflow-y: scroll;
+  background: #333;
+}
+
+#tree-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#tree-container svg {
+  width: 100vw;
+  height: 100vh;
 }
