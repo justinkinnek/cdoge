@@ -1,6 +1,6 @@
 import json
 import itertools
-from collections import Counter
+from collections import Counter, defaultdict
 from haversine import haversine
 from sklearn.cluster import AgglomerativeClustering
 
@@ -42,6 +42,7 @@ def get_geo_coords(data):
         if loc_dict.get('latitude') and loc_dict.get('longitude'):
             results.append((id, loc_dict['latitude'], loc_dict['longitude']))
     return results
+
 
 def create_sklearn_distance_matrix(data):
     hits = []
@@ -93,8 +94,34 @@ def generate_clusters(geo_data, data, step=5):
     return results
 
 
-def generate_dendrogram_json(clusters):
-    pass
+def recursive_defaultdict():
+    return defaultdict(recursive_defaultdict)
+
+
+def generate_dendrogram_dict(data):
+    grouped_data = recursive_defaultdict()
+    for cluster_id in data:
+        parent, sub = cluster_id.split('_')
+        grouped_data[parent][sub] = data[cluster_id]
+    result = {
+        'name': "World Wide",
+        'children': []
+    }
+    parents = []
+    for parent in grouped_data:
+        leaves = []
+        for sub in grouped_data[parent]:
+            leaf = {
+                'name': sub,
+                'data': grouped_data[parent][sub]
+            }
+            leaves.append(leaf)
+        parents.append({
+            'name': parent,
+            'children': leaves
+        })
+    result['children'] = parents
+    return result
 
 
 data = load_data()
@@ -103,4 +130,9 @@ network_edges = get_follow_edges(data)
 geos = get_geo_coords(data)
 # with open('clusters_step_5.json', 'w') as f:
 #     f.write(json.dumps(generate_clusters(geos, data)))
+
+cluster_data = json.loads(open('clusters_step_5.json').read())
+dendro_dict = generate_dendrogram_dict(cluster_data)
+with open('dendro.json', 'w') as f:
+    f.write(json.dumps(dendro_dict))
 
