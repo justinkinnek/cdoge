@@ -1,6 +1,6 @@
 import json
 import itertools
-from collections import Counter
+from collections import Counter, defaultdict
 from haversine import haversine
 from sklearn.cluster import AgglomerativeClustering
 
@@ -43,6 +43,7 @@ def get_geo_coords(data):
             results.append((id, loc_dict['latitude'], loc_dict['longitude']))
     return results
 
+
 def create_sklearn_distance_matrix(data):
     hits = []
     for id_a, lat_a, long_a in data:
@@ -71,31 +72,67 @@ def cluster_geo_data(geo_data, n_clusters, data):
     return d
 
 
-def generate_clusters(geo_data, data, start, end, step=10):
+def generate_clusters(geo_data, data, step=5):
     results = {}
-    level = 0
-    previous = None
-    for i in range(4):
-        if previous:
-            for cluster in results[previous]:
-                curr_page_ids = set([t[1][0] for t in results[previous][cluster].values()])
-                curr_geo_data = filter(lambda x: x[0] in curr_page_ids, geo_data)
-        else:
-            curr_geo_data = geo_data
-            results[str(i)] = cluster_geo_data(geo_data, 4, data)
-        previous = i
-        level += 1
+    first_round = cluster_geo_data(geo_data, step, data)
+    for c_id in first_round:
+        curr_page_ids = set([t[1][0] for t in first_round[c_id]])
+        curr_geo_data = filter(lambda x: x[0] in curr_page_ids, geo_data)
+        sub_result = cluster_geo_data(curr_geo_data, step, data)
+        results.update({str(c_id)+'_'+str(k):v for k,v in sub_result.items()})
+
+    # for i in range(2):
+    #     if previous:
+    #         for cluster in results[previous]:
+    #             curr_page_ids = set([t[1][0] for t in results[previous][cluster].values()])
+    #             curr_geo_data = filter(lambda x: x[0] in curr_page_ids, geo_data)
+    #     else:
+    #         curr_geo_data = geo_data
+    #         results[str(i)] = cluster_geo_data(geo_data, 5, data)
+    #     previous = i
+    #     level += 1
     return results
 
 
-def generate_dendrogram_json(clusters):
-    pass
+def recursive_defaultdict():
+    return defaultdict(recursive_defaultdict)
+
+
+def generate_dendrogram_dict(data):
+    grouped_data = recursive_defaultdict()
+    for cluster_id in data:
+        parent, sub = cluster_id.split('_')
+        grouped_data[parent][sub] = data[cluster_id]
+    result = {
+        'name': "World Wide",
+        'children': []
+    }
+    parents = []
+    for parent in grouped_data:
+        leaves = []
+        for sub in grouped_data[parent]:
+            leaf = {
+                'name': sub,
+                'data': grouped_data[parent][sub]
+            }
+            leaves.append(leaf)
+        parents.append({
+            'name': parent,
+            'children': leaves
+        })
+    result['children'] = parents
+    return result
 
 
 data = load_data()
 network_edges = get_follow_edges(data)
 #open('influencers.txt', 'w').write(str(map(lambda x: (x[0].encode('utf-8'), x[1]), get_most_common_edges(network_edges, 50))))
 geos = get_geo_coords(data)
-# with open('clusters10-50.json', 'w') as f:
-#     f.write(json.dumps(generate_clusters(geos, data, 10, 50)))
+# with open('clusters_step_5.json', 'w') as f:
+#     f.write(json.dumps(generate_clusters(geos, data)))
+
+cluster_data = json.loads(open('clusters_step_5.json').read())
+dendro_dict = generate_dendrogram_dict(cluster_data)
+with open('dendro.json', 'w') as f:
+    f.write(json.dumps(dendro_dict))
 
