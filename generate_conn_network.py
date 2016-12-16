@@ -72,16 +72,30 @@ def cluster_geo_data(geo_data, n_clusters, data):
 
 
 def generate_clusters(geo_data, data, start, end, step=10):
-    for i in range(start, end, step):
-        pass
+    results = {}
+    level = 0
+    previous = None
+    for i in range(4):
+        if previous:
+            for cluster in results[previous]:
+                curr_page_ids = set([t[1][0] for t in results[previous][cluster].values()])
+                curr_geo_data = filter(lambda x: x[0] in curr_page_ids, geo_data)
+        else:
+            curr_geo_data = geo_data
+            results[str(i)] = cluster_geo_data(geo_data, 4, data)
+        previous = i
+        level += 1
+    return results
 
+
+def generate_dendrogram_json(clusters):
+    pass
 
 
 data = load_data()
 network_edges = get_follow_edges(data)
+#open('influencers.txt', 'w').write(str(map(lambda x: (x[0].encode('utf-8'), x[1]), get_most_common_edges(network_edges, 50))))
 geos = get_geo_coords(data)
-# X = create_sklearn_distance_matrix(geos)
-# model = AgglomerativeClustering()
-# model.fit(X)
-cluster_data = cluster_geo_data(geos, 10, data)
-print len(cluster_data)
+# with open('clusters10-50.json', 'w') as f:
+#     f.write(json.dumps(generate_clusters(geos, data, 10, 50)))
+
