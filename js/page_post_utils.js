@@ -32,7 +32,7 @@ function posts_for_page_ids(page_ids) {
                 var curr = DATA[page_id]["feed"]["data"][i];
                 results.push({
                     "id": curr["id"],
-                    "created_time": curr["created_time"],
+                    "created_time": Date(curr["created_time"]),
                     "page_name": page_name,
                     "website": website
                 })
@@ -77,10 +77,25 @@ function reload_embedded_posts() {
 
 }
 
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+
 
 function set_embedded_posts(page_ids, n_posts){
     var posts_root = $("#posts_view");
+    posts_root.empty();
     var post_ids = posts_for_page_ids(page_ids);
+    // post_ids.sort(function(a,b){
+    //    return b['created_time'] - a['created_time'];
+    // });
+    shuffle(post_ids);
     for (var i=0;i<post_ids.length;i++){
         if (i<n_posts){
             var new_post = document.createElement("div");
@@ -90,7 +105,7 @@ function set_embedded_posts(page_ids, n_posts){
             new_post.setAttribute("data-href", "https://www.facebook.com/"+splits[0]+"/posts/"+splits[1]+"/");
             new_post.setAttribute("data-width", "500");
             posts_root.append(new_post);
-            console.log("AHH Happened")
+            console.log("AHH Happened");
         }
 
     }
@@ -107,7 +122,6 @@ function get_dendrogram_pages(parent, sub) {
     var results = []
     for (hit in sub_doc["data"]){
         results.push(sub_doc["data"][hit][1][0])
-
     }
     return results;
 }
