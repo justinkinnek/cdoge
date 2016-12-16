@@ -1,4 +1,5 @@
 import json
+import csv
 import itertools
 from collections import Counter, defaultdict
 from haversine import haversine
@@ -125,6 +126,21 @@ def generate_dendrogram_dict(data):
 
 
 data = load_data()
+# with open('data/our_fan_count_bubbles.csv', 'w') as f:
+#     writer = csv.writer(f)
+#     headers = ['name', 'id', 'fan_count', 'website', 'city', 'country']
+#     writer.writerow(headers)
+#     for page_id in data:
+#         info_d = data[page_id].get('')
+#         if not info_d:
+#             continue
+#         name = info_d.get("name")
+#         fan_count = info_d.get('fan_count')
+#         _id = info_d.get('id')
+#         site = info_d.get('site')
+#         city = info_d.get('location', {}).get('city')
+#         country = info_d.get('location', {}).get('country')
+#         writer.writerow(map(lambda x: x.encode('utf-8') if isinstance(x, basestring) else (x and str(x)), [name, _id, fan_count, site, city, country]))
 # with open('js/data_as_object.js', 'w') as f:
 #     f.write(json.dumps(data))
 network_edges = get_follow_edges(data)
