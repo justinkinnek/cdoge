@@ -367,7 +367,8 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         var working_pages = get_dendrogram_pages(parent, sub);
         set_embedded_posts(working_pages, 20);
         var working_page_data = page_data_filter(working_pages);
-        //update_sidebar(working_page_data);
+        update_side_panel(working_page_data);
+        enforce_sidepanel_opened();
         console.log("It all happened")
     }
 
@@ -377,7 +378,15 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         if (d3.event.defaultPrevented) return; // click suppressed
         if (!d._children && d.name != null && d.curr_path != null) {
             d = toggleChildren(d);
-            sync_pages(d.curr_path[0], d.name);
+            try{
+                sync_pages(d.curr_path[0], d.name);
+            }catch (err){
+                console.log("Error:");
+                console.log(err.message);
+                update(d);
+                centerNode(d);
+            }
+
         }else {
             d = toggleChildren(d);
             update(d);
