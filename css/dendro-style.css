@@ -1,0 +1,105 @@
+html,body {
+  margin:0;
+  padding:0;
+  outline: 0;
+  height: 100%;
+  background: #444;
+}
+body:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 80px solid transparent;
+  border-left: 80px solid #333;
+  z-index: 0;
+}
+.k-logo {
+  width: 40px;
+  z-index: 1;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+   -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+   -webkit-transform: rotate(0deg);
+}
+.k-logo path {
+  fill: #FFF;
+}
+.k-logo:hover {
+   -webkit-transform: rotate(360deg);
+}
+
+.node {
+  cursor: pointer;
+}
+
+.overlay{
+    background-color: #444;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  fill: #FFF;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+   -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  font-family: Helvetica;
+  text-transform: capitalize;
+}
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+.templink {
+  fill: none;
+  stroke: red;
+  stroke-width: 3px;
+}
+
+.ghostCircle.show{
+  display:block;
+}
+
+.ghostCircle, .activeDrag .ghostCircle{
+  display: none;
+}
+#opener {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  color: #FFF;
+}
+#side-panel {
+  -webkit-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: #333;
+  float: right;
+  position: absolute;
+  overflow: scroll;
+  margin-right: -400px;
+}
+#side-panel.opened {
+  margin-right: 0px;
+}
+.panel-item {
+  background: #333;
+  color: #FFF;
+  padding: 50px;
+  font-size: 30px;
+}
