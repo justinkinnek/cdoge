@@ -1,0 +1,541 @@
+// colors
+$lightGray:  #F9F9F9;
+$gray:       #EAEAEA;
+$midGray:    #999999;
+$darkGray:   #333333;
+$troveRed:   #f26868;
+$troveRedD:  #dd2435;
+$troveGray:  #b7b0b0;
+$troveGrayD: #8e8b8b;
+$transWhite: rgba(255,255,255,0.95);
+$transGray:  rgba(255,255,255,1.0);
+
+*, *:hover, *:focus, *.focus, *:active {
+  outline: 0;
+}
+
+body.controller__users.action__show {
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  line-height: 26px;
+  color: #666;
+  background-color: $lightGray;
+  // background-image: url(https://s3.amazonaws.com/discoanimalecom-1/assets/images/brillant.png);
+}
+
+.navbar.navbar-default {
+  background-color: $transWhite;
+  border-bottom: solid 1px $gray;
+  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.04);
+  .navbar-brand {
+    display: inline-block;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    margin-left: -60px;
+    padding: 16px 20px 24px 0px;
+    img {
+      display: block;
+      height: 24px;
+      margin: -2px -2px -12px 15px;
+      padding: 0px;
+      opacity: 0.95;
+      -webkit-transition: all 1s ease-in-out;
+         -moz-transition: all 1s ease-in-out;
+           -o-transition: all 1s ease-in-out;
+              transition: all 1s ease-in-out;
+      &:hover {
+        opacity: 1.0;
+      }
+    }
+  }
+  .navbar-nav {
+    li a {
+        display: block;
+        border-left: solid #eaeaea 1px;
+        border-bottom: none;
+        font-weight: 400;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        color: #808080;
+        padding: 15px 20px 14px 20px;
+        margin-right: 0px;
+        margin-top: 0px;
+        letter-spacing: 0.06em;
+      &:hover {
+        background-color: $transGray;
+        text-decoration: none;
+        color: $darkGray;
+      }
+      &:focus {
+        background-color: $transGray;
+        text-decoration: none;
+        color: $darkGray;
+      }
+      i {
+        font-size: 11px;
+      }
+      &.hamburg {
+        padding: 8px 18px 8px 18px;
+        i {
+          font-size: 34px;
+        }
+      }
+      &.bell {
+        padding: 10px 18px 13px 19px;
+        i {
+          font-size: 27px;
+        }
+      }
+    }
+    .active {
+      a {
+        background-color: $transGray;
+        color: $troveRedD;
+        &:hover {
+          background-color: $transGray;
+          text-decoration: none;
+          color: $troveRedD;
+        }
+        &:focus {
+          background-color: $transGray;
+          text-decoration: none;
+          color: $troveRedD;
+        }
+      }
+    }
+    li.dropdown:hover {
+      .dropdown-menu {
+        display: block; 
+        padding: 0px;
+        margin: 0px -1px 0 0;
+        list-style: none;
+        background-color: #FFFFFF;
+        border: solid $gray 1px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        a {
+          border: 0px solid $gray;
+          background-color: #FFFFFF;
+          color: $darkGray;
+          &:hover {
+            background-color: $lightGray;
+            text-decoration: none;
+            color: $darkGray;
+          }
+          &:focus {
+            background-color: $lightGray;
+            text-decoration: none;
+            color: $darkGray;
+          }
+        }
+        .divider {
+          height: 1px;
+          margin: 0;
+          overflow: hidden;
+          background-color: $gray;
+        }
+      }
+      .badge {
+        background-color: $midGray;
+      }
+    }
+    .open {
+      a {
+        background-color: $lightGray;
+        color: $darkGray;
+        &:hover {
+          background-color: #ffffff;
+          text-decoration: none;
+          color: $darkGray;
+        }
+        &:focus {
+          background-color: #ffffff;
+          text-decoration: none;
+          color: $darkGray;
+        }
+      }
+      .dropdown-menu {
+        padding: 0px;
+        margin: 0px -1px 0 0;
+        list-style: none;
+        background-color: #ffffff;
+        border: solid $gray 1px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        a {
+          border: 0px solid $gray;
+          &:hover {
+            background-color: $lightGray;
+            text-decoration: none;
+            color: $darkGray;
+          }
+          &:focus {
+            background-color: $lightGray;
+            text-decoration: none;
+            color: $darkGray;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (min-width: 768px) {
+  .navbar-right {
+    margin-right: 0px;
+  }
+}
+
+.badge {
+  display: inline-block;
+  min-width: 5px;
+  padding: 4px 7px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.0em;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #DEDCDC;
+  border-radius: 10px;
+  margin-top: -3px;
+  margin-left: 5px;
+  margin-right: -5px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: 0px solid transparent;
+    width: 100%;
+    text-align: center;
+    background-color: #FFF;
+    border-top: 1px solid #EAEAEA;
+}
+
+.navbar-toggle {
+  position: relative;
+  float: left;
+  font-size: 34px;
+  color: #808080;
+  padding: 10px 10px 10px 10px;
+  margin-left: 0px;
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 0px;
+  background-color: transparent;
+  background-image: none;
+  border: 0px solid transparent;
+  border-radius: 0;
+  padding: 8px 18px 8px 18px;
+  color: #808080;
+  a {
+    color: #808080;
+    &:hover {
+     text-decoration: none;
+     color: #333;
+    }
+  }
+}
+
+.navbar.navbar-default .navbar-nav li a:hover {
+    background-color: white;
+    text-decoration: none;
+    color: #333;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+
+
+.card {
+  position: absolute;
+  -webkit-transition: all .3s ease-in-out;
+     -moz-transition: all .3s ease-in-out;
+       -o-transition: all .3s ease-in-out;
+      -ms-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
+  .card-content {
+    position: relative;
+    height: auto;
+    border: 1px solid #EAEAEA;
+    border-radius: 0px;
+    float: left;
+    overflow: hidden;
+    padding: 0px 0px 0px;
+    text-align: center;
+    margin-bottom: 0px;
+    width: 250px;
+    height: 330px;
+    background: #FFF;
+    .overlay {
+      -webkit-transition: all 0.3s ease-in-out;
+         -moz-transition: all 0.3s ease-in-out;
+           -o-transition: all 0.3s ease-in-out;
+          -ms-transition: all 0.3s ease-in-out;
+              transition: all 0.3s ease-in-out;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      opacity: 0.0;
+      .card_darken {
+        background: rgba(0,0,0,0.03);
+        width: 100%;
+        position: absolute;
+        height: 250px;
+      }
+      .grid-cta {
+        margin-top: 5px;
+        position: relative;
+        z-index: 1000;
+        .btn.btn_trove,
+        .btn.btn_customize,
+        .btn.btn_buy,
+        .btn.btn_edit, 
+        .btn.btn_remove,
+        .btn.btn_follow,
+        .btn.btn_unfollow {
+          border: 0px solid transparent;
+          white-space: nowrap;
+          padding: 5px 13px;
+          font-size: 13px;
+          color: #FFF;
+          width: auto;
+          line-height: 1.42857143;
+          border-radius: 0px;
+          margin-left: 1px;
+          margin-right: 1px;
+        }
+        .btn.btn_trove, 
+        .btn.btn_customize,
+        .btn.btn_follow {
+          background-color: $troveRed;
+          &:hover {
+            background-color: $troveRedD;
+          }
+          &:focus {
+            background-color: $troveRedD;
+          }
+          &.focus {
+            background-color: $troveRedD;
+          }
+        }
+        .btn.btn_edit, 
+        .btn.btn_remove,
+        .btn.btn_buy,
+        .btn.btn_unfollow {
+          background-color: $troveGray;
+          &:hover {
+            background-color: $troveGrayD;
+          }
+          &:focus {
+            background-color: $troveGrayD;
+          }
+          &.focus {
+            background-color: $troveGrayD;
+          }
+        }
+      }
+    }
+    .overlay:hover {
+      opacity: 1.0;
+    }
+    .card_item_name {
+      position: absolute;
+      width: 100%;
+      bottom: 80px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #EAEAEA;
+      pointer-events: none;
+      a {
+        color: #666;
+        font-size: 16px;
+        font-weight: 300;
+        opacity: 0.6;
+        &:hover {
+          text-decoration: none;
+          opacity: 1.0;
+        }
+        &:focus {
+          text-decoration: none;
+          opacity: 1.0;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// nprogress
+
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #29d;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  bottom: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.navbar-nav {
+  margin: 0px 0px;
+}
+
+.navbar.navbar-default .navbar-nav li a.bell {
+  padding: 10px 18px 9px 19px;
+}
+
+.navbar.navbar-default .navbar-nav li a.hamburg {
+  padding: 8px 18px 7px 17px;
+  font-size: 100% !important;
+}
+
+.navbar-toggle {
+  font-size: 32px !important;
+  padding: 10px 18px 8px 18px;
+}
+
+.navbar.navbar-default .navbar-nav li a.hamburg i {
+  font-size: 32px !important;
+}
+
+.navbar.navbar-default .navbar-brand {
+  display: inline-block;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  margin-left: -60px;
+  padding: 16px 20px 18px 0px;
+}
+
+@media (max-width: 480px) {
+  .navbar-nav {
+    margin: 0px -10px;
+  }
+}
+
+
+.btn, 
+.card__actions a, 
+.card__actions a {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  height: 30px;
+  border: 0px solid transparent;
+  white-space: nowrap;
+  padding: 5px 13px;
+  font-size: 13px;
+  color: #FFF;
+  line-height: 1.42857143;
+  border-radius: 0px;
+  margin: 6px 1px 0px 1px;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.06em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.btn.btn_trove, 
+.card__actions a.btn_trove, 
+.btn.btn_customize, 
+.card__actions a.btn_customize, 
+.btn.btn_buy, 
+.card__actions a.btn_buy, 
+.btn.btn_edit, 
+.card__actions a.btn_edit, 
+.btn.btn_remove, 
+.card__actions a.btn_remove, 
+.btn.btn_follow, 
+.card__actions a.btn_follow, 
+.btn.btn_unfollow, 
+.card__actions a.btn_unfollow {
+  background-color: #b7b0b0;
+}
+
+.btn.btn_trove, 
+.card__actions a.btn_trove, 
+.btn.btn_customize, 
+.card__actions a.btn_customize, 
+.btn.btn_follow, 
+.card__actions a.btn_follow {
+  background-color: #f26868;
+}

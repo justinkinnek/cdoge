@@ -1,0 +1,165 @@
+shipping_methods:
+  1: #'USA'
+    attributes:
+      name: 'UPS 3-5 day'
+      shipping_zone_id: 1
+  2: #'USA'
+    attributes:
+      name: 'UPS next day'
+      shipping_zone_id: 1
+  3: #Alaska and Hawaii
+    attributes:
+      name: 'UPS 3-5 day'
+      shipping_zone_id: 2
+  4: #Canada
+    attributes:
+      name: 'UPS 3-5 day'
+      shipping_zone_id: 3
+  5: #Canada
+    attributes:
+      name: 'UPS 7-14 day'
+      shipping_zone_id: 3
+  6: #USA Territory
+    attributes:
+      name: 'UPS 7-14 day'
+      shipping_zone_id: 4
+
+shipping_categories:
+  1:
+    attributes:
+      name: Clothing
+  2:
+    attributes:
+      name: Furniture
+  3:
+    attributes:
+      name: Jewelry
+
+shipping_rates:
+  1: #'FREE, shipping_rate_type => Order, shipping_category => Clothing'
+    attributes:
+      shipping_method_id: 1
+      rate: 0.00
+      shipping_rate_type_id: 2
+      shipping_category_id: 1
+      minimum_charge: 25.00
+      position: 1
+      active: true
+  2: #'STANDARD, shipping_rate_type => Order, shipping_category => Clothing'
+    attributes:
+      shipping_method_id: 1
+      rate: 7.00
+      shipping_rate_type_id: 2
+      shipping_category_id: 1
+      minimum_charge: 0.00
+      position: 2
+      active: true
+  3: #'EXPEDITE, shipping_rate_type => Order, shipping_category => Clothing'
+    attributes:
+      shipping_method_id: 2
+      rate: 15.00
+      shipping_rate_type_id: 2
+      shipping_category_id: 1
+      minimum_charge: 0.00
+      position: 3
+      active: true
+  4: #'STANDARD ALASKA, shipping_rate_type => Order, shipping_category => Clothing'
+    attributes:
+      shipping_method_id: 3
+      rate: 10.00
+      shipping_rate_type_id: 2
+      shipping_category_id: 1
+      minimum_charge: 0.00
+      position: 1
+      active: true
+  5: #'STANDARD CANADA, shipping_rate_type => Order, shipping_category => Clothing'
+    attributes:
+      shipping_method_id: 4
+      rate: 15.00
+      shipping_rate_type_id: 2
+      shipping_category_id: 1
+      minimum_charge: 0.00
+      position: 1
+      active: true
+  6: #'GROUND CANADA, shipping_rate_type => Order, shipping_category => Clothing'
+    attributes:
+      shipping_method_id: 5
+      rate: 10.00
+      shipping_rate_type_id: 2
+      shipping_category_id: 1
+      minimum_charge: 0.00
+      position: 2
+      active: true
+  7: #'GROUND US TERRITORY, shipping_rate_type => Order, shipping_category => Clothing'
+    attributes:
+      shipping_method_id: 6
+      rate: 12.00
+      shipping_rate_type_id: 2
+      shipping_category_id: 1
+      minimum_charge: 0.00
+      position: 2
+      active: true
+  8: #'FREE, shipping_rate_type => Individual, shipping_category => Furniture'
+    attributes:
+      shipping_method_id: 1
+      rate: 0.00
+      shipping_rate_type_id: 1
+      shipping_category_id: 2
+      minimum_charge: 25.00
+      position: 1
+      active: true
+  9: #'STANDARD, shipping_rate_type => Individual, shipping_category => Furniture'
+    attributes:
+      shipping_method_id: 1
+      rate: 7.00
+      shipping_rate_type_id: 1
+      shipping_category_id: 2
+      minimum_charge: 0.00
+      position: 2
+      active: true
+  10: #'EXPEDITE, shipping_rate_type => Individual, shipping_category => Furniture'
+    attributes:
+      shipping_method_id: 2
+      rate: 15.00
+      shipping_rate_type_id: 1
+      shipping_category_id: 2
+      minimum_charge: 0.00
+      position: 3
+      active: true
+  11: #'STANDARD ALASKA, shipping_rate_type => Individual, shipping_category => Furniture'
+    attributes:
+      shipping_method_id: 3
+      rate: 10.00
+      shipping_rate_type_id: 1
+      shipping_category_id: 2
+      minimum_charge: 0.00
+      position: 1
+      active: true
+  12: #'STANDARD CANADA, shipping_rate_type => Individual, shipping_category => Furniture'
+    attributes:
+      shipping_method_id: 4
+      rate: 15.00
+      shipping_rate_type_id: 1
+      shipping_category_id: 2
+      minimum_charge: 0.00
+      position: 1
+      active: true
+  13: #'GROUND CANADA, shipping_rate_type => Individual, shipping_category => Furniture'
+    attributes:
+      shipping_method_id: 5
+      rate: 10.00
+      shipping_rate_type_id: 1
+      shipping_category_id: 2
+      minimum_charge: 0.00
+      position: 2
+      active: true
+  14: #'GROUND US TERRITORY, shipping_rate_type => Individual, shipping_category => Furniture'
+    attributes:
+      shipping_method_id: 6
+      rate: 12.00
+      shipping_rate_type_id: 1
+      shipping_category_id: 2
+      minimum_charge: 0.00
+      position: 2
+      active: true
+

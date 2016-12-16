@@ -1,0 +1,440 @@
+5: #Sweet Item 5
+  attributes:
+    itemName: Sweet Item 5
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+6: #Sweet Item 6
+  attributes:
+    itemName: Sweet Item 6
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+7: #Sweet Item 7
+  attributes:
+    itemName: Sweet Item 7
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+8: #Sweet Item 8
+  attributes:
+    itemName: Sweet Item 8
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 5
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+9: #Sweet Item 9
+  attributes:
+    itemName: Sweet Item 9
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+10: #Sweet Item 10
+  attributes:
+    itemName: Sweet Item 10
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 3
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+11: #Sweet Item 11
+  attributes:
+    itemName: Sweet Item 11
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+12: #Sweet Item 12
+  attributes:
+    itemName: Sweet Item 12
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 4
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+13: #Sweet Item 13
+  attributes:
+    itemName: Sweet Item 13
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 4
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+14: #Sweet Item 14
+  attributes:
+    itemName: Sweet Item 14
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 5
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+15: #Sweet Item 15
+  attributes:
+    itemName: Sweet Item 15
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+16: #Sweet Item 16
+  attributes:
+    itemName: Sweet Item 16
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+17: #Sweet Item 17
+  attributes:
+    itemName: Sweet Item 17
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+18: #Sweet Item 18
+  attributes:
+    itemName: Sweet Item 18
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+19: #Sweet Item 19
+  attributes:
+    itemName: Sweet Item 19
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 3
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+20: #Sweet Item 20
+  attributes:
+    itemName: Sweet Item 20
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+21: #Sweet Item 21
+  attributes:
+    itemName: Sweet Item 21
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+22: #Sweet Item 22
+  attributes:
+    itemName: Sweet Item 22
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+23: #Sweet Item 23
+  attributes:
+    itemName: Sweet Item 23
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 4
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+24: #Sweet Item 24
+  attributes:
+    itemName: Sweet Item 24
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 5
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+25: #Sweet Item 25
+  attributes:
+    itemName: Sweet Item 25
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+26: #Sweet Item 26
+  attributes:
+    itemName: Sweet Item 26
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+27: #Sweet Item 27
+  attributes:
+    itemName: Sweet Item 27
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+28: #Sweet Item 28
+  attributes:
+    itemName: Sweet Item 28
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 6
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+29: #Sweet Item 29
+  attributes:
+    itemName: Sweet Item 29
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 4
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+30: #Sweet Item 30
+  attributes:
+    itemName: Sweet Item 30
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 3
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+31: #Sweet Item 31
+  attributes:
+    itemName: Sweet Item 31
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+32: #Sweet Item 32
+  attributes:
+    itemName: Sweet Item 32
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+33: #Sweet Item 33
+  attributes:
+    itemName: Sweet Item 33
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 4
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+34: #Sweet Item 34
+  attributes:
+    itemName: Sweet Item 34
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 5
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+35: #Sweet Item 35
+  attributes:
+    itemName: Sweet Item 35
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+36: #Sweet Item 36
+  attributes:
+    itemName: Sweet Item 36
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+37: #Sweet Item 37
+  attributes:
+    itemName: Sweet Item 37
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 2
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+38: #Sweet Item 38
+  attributes:
+    itemName: Sweet Item 38
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+39: #Sweet Item 39
+  attributes:
+    itemName: Sweet Item 39
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 1
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: false
+
+40: #Sweet Item 40
+  attributes:
+    itemName: Sweet Item 40
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+41: #Sweet Item 41
+  attributes:
+    itemName: Sweet Item 41
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+42: #Sweet Item 42
+  attributes:
+    itemName: Sweet Item 42
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 3
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+43: #Sweet Item 43
+  attributes:
+    itemName: Sweet Item 43
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 4
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+
+44: #Sweet Item 44
+  attributes:
+    itemName: Sweet Item 44
+    itemDescription: 'This is a sweet item.'
+    category: Sweet
+    user_id: 5
+    shipping_category_id: 2
+    meta_keywords: test word sweet fun
+    meta_description: meta description
+    featured: true
+

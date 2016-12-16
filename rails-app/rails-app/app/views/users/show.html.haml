@@ -1,0 +1,264 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  %button.navbar-toggle.visible-xs-inline{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+    %a.hamburg{:href => "#"}
+      %i.ion-navicon
+  %a.navbar-brand{:href => "/"}
+    %img{:src => "/resources/img/trove-logo.svg"}/
+  .collapse.navbar-collapse
+    %ul.nav.navbar-nav.navbar-left.hidden-xs
+      %li.dropdown
+        %a.hamburg{:href => "#"}
+          %i.ion-navicon
+        %ul.dropdown-menu{:role => "menu"}
+          %li
+            %a{:href => "#/home"} Home
+          %li
+            %a{:href => "#/about"} About
+    %ul.nav.navbar-nav.navbar-left
+      %li.active
+        %a{:href => "#/feed"} FEED
+      %li
+        %a{:href => "#/mytrove", :style => "border-left: 0px solid #FFF;"} MY TROVE
+    %ul.nav.navbar-nav.navbar-right.hidden-xs
+      %li.dropdown
+        %a.bell{:href => "#"}
+          %i.ion-ios-bell-outline
+        %ul.dropdown-menu.cart{:role => "menu"}
+          %li
+            %a{:href => "#/home"} No New Notifications
+      %li.dropdown
+        %a{:href => "#"}
+          Cart&nbsp;&nbsp;
+          %span.badge 0
+        %ul.dropdown-menu.cart{:role => "menu"}
+          %li
+            %a{:href => "#/home"} Cart Currently Empty
+      %li.dropdown
+        %a{:href => "#"}
+          User&nbsp;&nbsp;
+          %i.ion-chevron-down
+        %ul.dropdown-menu{:role => "menu"}
+          %li
+            %a{:href => "#/home"} Home
+          %li
+            %a{:href => "#/about"} About
+          %li
+            - if user_signed_in?
+              = link_to I18n.t('auth.logout.link'), destroy_user_session_path, rel: :nofollow
+
+#content
+// FEED MAIN ITEMS
+%script#feeditemcards{:type => "text/x-handlebars"}
+  {{#each this}}
+  .card.item{:id => "card-{{id}}", :style => "opacity:0;"}
+    .card-content.item{:id => "item-{{id}}"}
+      .overlay
+        %a{:href => "/public/productdescription/{{id}}"}
+          .card_darken
+        .grid-cta
+          %button.btn.btn_trove{:id => "troveItem-{{id}}", :onclick => "TROVE.troveItem({{id}})"} Trove
+          %button.btn.btn_customize{:id => "customizeItem-{{id}}"} Customize
+          %button.btn.btn_buy.cardbuybutton{"data-target" => "#modalbuyItem-{{id}}", "data-toggle" => "modal", :id => "buyItem-{{id}}"} Buy
+      .card_item_name
+        %a{:href => "/public/productdescription/{{id}}"} {{itemName}}
+  {{/each}}
+
+%script#home-template{:type => "text/template"}
+  %h1 Home Page
+  {{ greeting }}
+%script#about-template{:type => "text/template"}
+  %h1 About Page
+  {{ content }}
+%script#feed-template{:type => "text/template"}
+  .row.items
+  {{ content }}
+%script#mytrove-template{:type => "text/template"}
+  {{ content }}
+
+- content_for :on_ready do
+  :plain
+    var authUserId = 1;
+    var cardData;
+    var pageNum = 1;
+    var itemsPerPage = 12;
+    var processing;
+    var ajaxProcessing;
+    var domProcessing;
+    var backboneProcessing;
+
+    function getFeedItems() {
+      var data = Object.create(null);
+      data['page'] = pageNum;
+      jQuery.ajax({
+          url: '/items',
+          data: jQuery.param(data),
+          cache: false,
+          contentType: false,
+          processData: false,
+          headers: {
+              'Access-Control-Allow-Origin': '*',
+              "X-CSRF-TOKEN": "guydwyvwuecvwwvycwevwcvweu"
+          },
+          type: 'GET',
+          success: function(data) {
+            cardData = data;
+            pageNum = pageNum + 1;
+            processing = false;
+          }
+      }).done( function() {
+        layoutBars();
+      });
+    }
+    
+    function layoutBars() {
+      var t = Handlebars.compile($('#feeditemcards').html());
+      $('.row.items').append(t(cardData));
+      setupCards('.card');
+    }
+
+    var colCount = 0;
+    var colWidth = 250;
+    var margin = 30;
+    var spaceLeft = 0;
+    var windowWidth = 0;
+    var blocks = [];
+    
+    function setupCards(selector) {
+      windowWidth = $(window).width();
+      blocks = [];
+      colCount = Math.floor(Math.min(windowWidth/(colWidth+margin*2), 4));
+      spaceLeft = (windowWidth - ((colWidth*colCount)+(margin*(colCount-1)))) / 2 + 15;
+      for(var i=0;i<colCount;i++){
+        blocks.push(margin);
+      }
+      $(selector).each(function(i){
+          var min = Array.min(blocks);
+          var index = $.inArray(min, blocks);
+          var leftPos = margin+(index*(colWidth+margin));
+          $(this).css({
+            'left':(leftPos+spaceLeft)-40+'px',
+            'top':min+$(".collection-container").height()+$(".navbar").height()+20+'px',
+            'display':'inherit',
+            'opacity':1
+          });
+          blocks[index] = min+$(this).outerHeight()+margin;
+      }); 
+    }
+
+    Array.min = function(array) {
+        return Math.min.apply(Math, array);
+    };
+
+    var HomeView = Backbone.View.extend({
+        template: Handlebars.compile( $("#home-template").html() ),      
+        initialize: function () {
+            this.render();
+        },
+        render: function () {
+            this.$el.html(this.template({greeting:"Welcome to Backbone!"}));
+        }
+    });
+
+    var FeedView = Backbone.View.extend({
+        template: Handlebars.compile( $("#feed-template").html() ),  
+        initialize: function () {
+            pageNum = 0;
+            this.render();
+        },
+        render: function () {
+            NProgress.start();
+            this.$el.html(this.template({content:""}));
+            this.afterRender();
+        },
+        afterRender: function() {
+            getFeedItems();
+        }
+    });
+
+    var MyTroveView = Backbone.View.extend({
+        template: Handlebars.compile( $("#mytrove-template").html() ),      
+        initialize: function () {
+            this.render();
+        },
+        render: function () {
+            NProgress.start();
+            this.$el.html(this.template({content:"my trove"}));
+            this.afterRender();
+        },
+        afterRender: function() {
+          NProgress.done();
+        }
+    });
+
+    var AboutView = Backbone.View.extend({
+        template: Handlebars.compile( $("#about-template").html() ),      
+        initialize: function () {
+            this.render();
+        },
+        render: function () {
+            this.$el.html(this.template({content:"As a software developer, I've always loved to build things..."}));
+        }
+    });
+
+    var AppRouter = Backbone.Router.extend({
+        routes: {          
+            ''        :  'feedRoute',
+            'feed'    :  'feedRoute',
+            'mytrove' :  'mytroveRoute',
+            'home'    :  'homeRoute',
+            'about'   :  'aboutRoute',          
+        },
+        feedRoute: function () {
+            var feedView = new FeedView();          
+            $("#content").html(feedView.el);
+        },
+        mytroveRoute: function () {
+            var mytroveView = new MyTroveView();          
+            $("#content").html(mytroveView.el);
+        },
+        homeRoute: function () {
+            var homeView = new HomeView();          
+            $("#content").html(homeView.el);
+        },
+        aboutRoute: function () {
+            var aboutView = new AboutView();          
+            $("#content").html(aboutView.el);
+        }
+    });
+
+    var appRouter = new AppRouter();
+
+    if (!Backbone.History.started) {
+      Backbone.history.start();
+    }
+
+    $('.nav li a').click(function(e) {
+      $('.nav li.active').removeClass('active');
+      $(this).closest('li').addClass('active');
+    });
+
+    $('a.hamburg').click(function(e) { 
+       e.preventDefault();
+    });
+
+    $(document).on('page:change', function() {
+      Backbone.history.stop()
+      Backbone.history.start()
+    });
+
+    $(window).scroll(function(e){
+      if (processing)
+        return false;
+      if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.65){
+        processing = true;
+        getFeedItems();
+      }
+    });
+
+    $(document).ajaxStart(function() { NProgress.inc(0.1); }); 
+    $(document).ajaxStop(function() {  NProgress.done();   });
+    $(window).load(function() {                            });  
+    $(document).ready(function() {                         });
+    $(window).on('resize', function() {
+      setupCards('.card');
+    });
