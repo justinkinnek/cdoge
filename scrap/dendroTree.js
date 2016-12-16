@@ -351,29 +351,46 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
     function toggleChildren(d) {
         if (d.children) {
             d._children = d.children;
+            d.curr_path.pop();
             d.children = null;
         } else if (d._children) {
+            d.curr_path = d.curr_path || [];
+            for (var i=0;i<d._children.length;i++){
+                d._children[i].curr_path = d._children[i].curr_path || [];
+                d._children[i].curr_path.push(d.name)
+            }
             d.children = d._children;
             d._children = null;
+            console.log(d.curr_path)
         }
         return d;
     }
 
-    function clickOnNode(nodeAttr, parentName) {
-        alert(nodeAttr + "-" + parentName);
+    function sync_pages(parent, sub) {
+        while(DENDRO_JSON == null){}
+        var working_pages = get_dendrogram_pages(parent, sub);
+        set_embedded_posts(working_pages, 10);
+        var working_page_data = page_data_filter(working_pages);
+        //update_sidebar(working_page_data);
+        console.log("It all happened")
     }
 
     // Toggle children on click.
 
     function click(d) {
-        if (!d._children) {
-            clickOnNode(d.name, d.parentName);
+        if (d3.event.defaultPrevented) return; // click suppressed
+        if (!d._children && d.name != null && d.curr_path != null) {
+            d = toggleChildren(d);
+            sync_pages(d.curr_path[0], d.name);
+        }else {
+            d = toggleChildren(d);
+            update(d);
+            centerNode(d);
         }
          
-        if (d3.event.defaultPrevented) return; // click suppressed
-        d = toggleChildren(d);
-        update(d);
-        centerNode(d);
+
+        //d = toggleChildren(d);
+
     }
 
     function update(source) {
