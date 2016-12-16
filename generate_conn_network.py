@@ -125,14 +125,16 @@ def generate_dendrogram_dict(data):
 
 
 data = load_data()
+# with open('js/data_as_object.js', 'w') as f:
+#     f.write(json.dumps(data))
 network_edges = get_follow_edges(data)
 #open('influencers.txt', 'w').write(str(map(lambda x: (x[0].encode('utf-8'), x[1]), get_most_common_edges(network_edges, 50))))
 geos = get_geo_coords(data)
 # with open('clusters_step_5.json', 'w') as f:
 #     f.write(json.dumps(generate_clusters(geos, data)))
 
-cluster_data = json.loads(open('clusters_step_5.json').read())
-dendro_dict = generate_dendrogram_dict(cluster_data)
-with open('dendro.json', 'w') as f:
-    f.write(json.dumps(dendro_dict))
+# cluster_data = json.loads(open('clusters_step_5.json').read())
+# dendro_dict = generate_dendrogram_dict(cluster_data)
+# with open('dendro.json', 'w') as f:
+#     f.write(json.dumps(dendro_dict))
 
