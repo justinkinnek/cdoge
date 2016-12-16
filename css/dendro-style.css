@@ -83,6 +83,12 @@ body:after {
   left: 100px;
   color: #FFF;
 }
+#opener2 {
+  position: absolute;
+  top: 60px;
+  left: 100px;
+  color: #FFF;
+}
 #side-panel {
   -webkit-transition: all .25s ease-in-out;
   transition: all .25s ease-in-out;
@@ -93,7 +99,7 @@ body:after {
   background: #333;
   float: right;
   position: absolute;
-  overflow: scroll;
+  overflow-y: scroll;
   margin-right: -400px;
 }
 #side-panel.opened {
@@ -107,14 +113,21 @@ body:after {
 }
 
 #posts_view {
-  position: fixed;
-  top: 0px;
-  left: 10vw;
+  -webkit-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+  top: 0;
+  right: 0;
   width: 400px;
-  bottom: 0px;
   padding: 20px;
+  height: 100%;
+  float: right;
+  position: absolute;
   overflow-y: scroll;
-  background: #333;
+  background: #FFF;
+  margin-right: -440px;
+}
+#posts_view.opened {
+  margin-right: 0px;
 }
 
 #tree-container {
@@ -127,4 +140,6 @@ body:after {
   height: 100vh;
 }
 
-
+.fb-post {
+  margin-bottom: 20px;
+}

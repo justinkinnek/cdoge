@@ -282,16 +282,12 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         }
     }
 
-    function expand(d, parentName) {
+    function expand(d) {
         if (d._children) {
             d.children = d._children;
-            var partial = function(c){
-                expand(c,d.name);
-            }
-            d.children.forEach(partial);
+            d.children.forEach(expand);
             d._children = null;
         }
-        console.log(parentName);
     }
 
     var overCircle = function(d) {
@@ -337,12 +333,12 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         scale = zoomListener.scale();
         x = -source.y0;
         y = -source.x0;
-        x = x * scale + viewerWidth / 2;
+        x = x * scale + viewerWidth / 3;
         y = y * scale + viewerHeight / 2;
         d3.select('g').transition()
             .duration(duration)
-            .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
-        zoomListener.scale(scale);
+            .attr("transform", "translate(" + x + "," + y + ")scale(" + 3 + ")");
+        // zoomListener.scale(scale);
         zoomListener.translate([x, y]);
     }
 
