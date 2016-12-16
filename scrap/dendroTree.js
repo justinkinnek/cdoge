@@ -282,12 +282,16 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         }
     }
 
-    function expand(d) {
+    function expand(d, parentName) {
         if (d._children) {
             d.children = d._children;
-            d.children.forEach(expand);
+            var partial = function(c){
+                expand(c,d.name);
+            }
+            d.children.forEach(partial);
             d._children = null;
         }
+        console.log(parentName);
     }
 
     var overCircle = function(d) {
@@ -355,10 +359,17 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
         return d;
     }
 
+    function clickOnNode(nodeAttr, parentName) {
+        alert(nodeAttr + "-" + parentName);
+    }
 
     // Toggle children on click.
 
     function click(d) {
+        if (!d._children) {
+            clickOnNode(d.name, d.parentName);
+        }
+         
         if (d3.event.defaultPrevented) return; // click suppressed
         d = toggleChildren(d);
         update(d);
