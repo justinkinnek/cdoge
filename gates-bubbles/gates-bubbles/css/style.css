@@ -1,12 +1,56 @@
+html,body {
+  margin:0;
+  padding:0;
+  outline: 0;
+  height: 100%;
+  width: 100vw;
+  overflow: hidden;
+  background: #444;
+}
+body:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 80px solid transparent;
+  border-left: 80px solid #333;
+  z-index: 0;
+}
+.k-logo {
+  width: 40px;
+  z-index: 1;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+   -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+   -webkit-transform: rotate(0deg);
+}
+.k-logo path {
+  fill: #FFF;
+}
+.k-logo:hover {
+   -webkit-transform: rotate(360deg);
+}
+
 a, a:visited, a:active {
   color: #444;
 }
 
 #vis {
-  width: 940px;
-  height: 600px;
+  width: 100vw;
+  height: 100vh;
   clear: both;
   margin-bottom: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#vis svg {
+  width: 100vw;
+  height: 100vh;
 }
 
 footer {
@@ -15,6 +59,19 @@ footer {
 
 #view_selection {
   margin-top: 10px;
+  position: absolute;
+  top: 10px;
+  left: 78px;
+  z-index: 100;
+}
+
+
+#ex1 {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  z-index: 100;
+  color: #FFF;
 }
 
 .years {

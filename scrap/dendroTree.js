@@ -27,7 +27,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
 
 
 // Get JSON data
-treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error, treeData) {
+treeJSON = d3.json("http://localhost:8000/dendro2.json", function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -330,14 +330,14 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
     // Function to center node when clicked/dropped so node doesn't get lost when collapsing/moving with large amount of children.
 
     function centerNode(source) {
-        scale = zoomListener.scale();
+        scale = 3;
         x = -source.y0;
         y = -source.x0;
         x = x * scale + viewerWidth / 3;
         y = y * scale + viewerHeight / 2;
         d3.select('g').transition()
             .duration(duration)
-            .attr("transform", "translate(" + x + "," + y + ")scale(" + 3 + ")");
+            .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
         // zoomListener.scale(scale);
         zoomListener.translate([x, y]);
     }
@@ -462,7 +462,7 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
                 return d.children || d._children ? "end" : "start";
             })
             .text(function(d) {
-                return d.name;
+                return d.title ? d.title : d.name;
             })
             .style("fill-opacity", 0);
 
@@ -489,7 +489,7 @@ treeJSON = d3.json("https://s3.amazonaws.com/cdoge/dendro.json", function(error,
                 return d.children || d._children ? "end" : "start";
             })
             .text(function(d) {
-                return d.name;
+                return d.title ? d.title : d.name;
             });
 
         // Change the circle fill depending on whether it has children and is collapsed

@@ -18,8 +18,8 @@
       this.create_nodes = __bind(this.create_nodes, this);
       var max_amount;
       this.data = data;
-      this.width = 940;
-      this.height = 600;
+      this.width = $(document).width();
+      this.height = $(document).height();
       this.tooltip = CustomTooltip("gates_tooltip", 240);
       this.center = {
         x: this.width / 2,
@@ -47,7 +47,7 @@
       this.circles = null;
       this.fill_color = d3.scale.ordinal().domain(["low", "medium", "high"]).range(["#d84b2a", "#beccae", "#7aa25c"]);
       max_amount = d3.max(this.data, function(d) {
-        return parseInt(d.total_amount);
+        return parseInt(d.fan_count);
       });
       this.radius_scale = d3.scale.pow().exponent(0.5).domain([0, max_amount]).range([2, 85]);
       this.create_nodes();
@@ -57,19 +57,35 @@
     BubbleChart.prototype.create_nodes = function() {
       this.data.forEach((function(_this) {
         return function(d) {
-          var node;
-          node = {
-            id: d.id,
-            radius: _this.radius_scale(parseInt(d.total_amount)),
-            value: d.total_amount,
-            name: d.grant_title,
-            org: d.organization,
-            group: d.group,
-            year: d.start_year,
-            x: Math.random() * 900,
-            y: Math.random() * 800
-          };
-          return _this.nodes.push(node);
+          if (parseInt(d.fan_count) < 10000){
+            return;
+          } else {
+            var group, year;
+            if (parseInt(d.fan_count) < 25000){
+              group = "low";
+              year = "2008";
+            } else if (parseInt(d.fan_count) > 100000) {
+              group = "high";
+              year = "2010";
+            } else {
+              group = "medium";
+              year = "2009";
+            }
+            var node;
+            node = {
+              id: d.id,
+              radius: _this.radius_scale(parseInt(d.fan_count)),
+              value: d.fan_count,
+              name: d.name,
+              org: d.city+", "+d.country,
+              group: group,
+              country: d.country,
+              year: year,
+              x: Math.random() * 900,
+              y: Math.random() * 800
+            };
+            return _this.nodes.push(node);
+          }
         };
       })(this));
       return this.nodes.sort(function(a, b) {
@@ -187,8 +203,8 @@
       var content;
       d3.select(element).attr("stroke", "black");
       content = "<span class=\"name\">Title:</span><span class=\"value\"> " + data.name + "</span><br/>";
-      content += "<span class=\"name\">Amount:</span><span class=\"value\"> $" + (addCommas(data.value)) + "</span><br/>";
-      content += "<span class=\"name\">Year:</span><span class=\"value\"> " + data.year + "</span>";
+      content += "<span class=\"name\">Fans:</span><span class=\"value\"> " + (addCommas(data.value)) + "</span><br/>";
+      content += "<span class=\"name\">Location:</span><span class=\"value\"> " + data.org + "</span>";
       return this.tooltip.showTooltip(content, d3.event);
     };
 
@@ -234,7 +250,7 @@
         }
       };
     })(this);
-    return d3.csv("data/gates_money.csv", render_vis);
+    return d3.csv("data/our_fan_count_bubbles.csv", render_vis);
   });
 
 }).call(this);

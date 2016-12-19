@@ -145,3 +145,12 @@ body:after {
 .fb-post {
   margin-bottom: 20px;
 }
+
+#ex2 {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  z-index: 100;
+  color: #FFF;
+}
